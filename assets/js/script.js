@@ -1,5 +1,5 @@
 function showFood() {
-    var inputCategory = document.querySelector('#pickC').value;
+    var inputCategory = document.querySelector('#pickc').value;
     console.log(inputCategory);
     fetch(
     'https://www.themealdb.com/api/json/v1/1/filter.php?c=' + inputCategory 

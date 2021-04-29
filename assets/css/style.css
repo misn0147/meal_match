@@ -1,3 +1,11 @@
 .container {
-    background-color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+.nav {
+    color: white;
+}
+
+header {
+    background-image: url("https://floridatrippers.com/wp-content/uploads/2020/09/date-night-in-orlando-wine-1600x900.jpg")
 }

@@ -14,52 +14,79 @@
         <div class="logo"></div>
         <h1>Meal Match</h1>
         <p class="lead">Make Date Night Simple.</p>
+        <nav>
+            <ul>
+              <li>
+                <a href="#our-prupose">Our Purpose</a>
+              </li>
+              <li>
+                <a href="#get-started">Get Started</a>
+              </li>
+              <li>
+                <a href="#meal-matches">Meal Matches</a>
+              </li>
+              <li>
+                <a href="#media">Media</a>
+              </li>
+            </ul>
+          </nav>
     </header>
 
     <section class="hero"></section>
 
-    <div>
-        <h2>Our Purpose</h2>
-        <P>When you can’t decide on what you want to order, and cooking just isn’t in the cards, you just want someone to decide for you. We’ll randomly choose a food and drink pairing for you to make a date night that is much more spontaneous and exciting than having to figure out a meal on your own! Date night at home will be exciting again, and you may be surprised to discover new recipes you’ve never heard of before. </P>
-    </div>   
-    <div>
-        <h2>Get Started!</h2>
-        <label for ="category">Select A Category:</label>
-        <select category="category" id="pickC">
-            <option value="beef">Beef</option>
-            <option value="chicken">Chicken</option>
-            <option value="lamb">Lamb</option>
-            <option value="pork">Pork</option>
-            <option value="seafood">Seafood</option>
-            <option value="pasta">Pasta</option>
-            <option value="vegetarian">Vegetarian</option>
-            <option value="vegan">Vegan</option>
-            <option value="dessert">Dessert</option>
-        </select>
-
-
-        <button onclick="showFood()">Try Us Out!</button>
-    </div>
-
-    <div class= "container">
-        <div class="row">
-            <div class="drink col s6" id="drink-info">
-                <h2>
-                    Drink Option
-                </h2>
-                <div id="text-container">dawdaa</div>
-                <div id="img-container">adaaw</div>
-            </div>
-            <div class="meal-text col s6" id="meal-info">
-                <h2>
-                    Meal Option
-                </h2>
-                <div id="text-container">akkaka</div>
-                <div id="img-container">alkklakak</div>
-            </div>
-    
+    <section id="our-purpose">
+        <div>
+            <h2>Our Purpose</h2>
+            <P>When you can’t decide on what you want to order, and cooking just isn’t in the cards, you just want someone to decide for you. We’ll randomly choose a food and drink pairing for you to make a date night that is much more spontaneous and exciting than having to figure out a meal on your own! Date night at home will be exciting again, and you may be surprised to discover new recipes you’ve never heard of before. </P>
+        </div> 
+    </section>
+    <section id="get-started">
+        <div>
+            <h2>Get Started!</h2>
+            <label for ="category">Select A Category:</label>
+            <select category="category" id="pickc">
+                <option value="beef">Beef</option>
+                <option value="chicken">Chicken</option>
+                <option value="lamb">Lamb</option>
+                <option value="pork">Pork</option>
+                <option value="seafood">Seafood</option>
+                <option value="pasta">Pasta</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="dessert">Dessert</option>
+            </select>
+            <button>Try Us Out!</button>
         </div>
-    </div>
-<script src="./assets/js/script.js"></script>
+    </section>
+
+    <section id="meal-matches">
+        <div class= "container">
+            <div class="row">
+                <div class="col s6" id="drink-info">
+                    <h2>
+                        Drink Option
+                    </h2>
+                    <div id="text-container">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad expedita perferendis fugit tempore recusandae beatae odio! Eum quae repellat tenetur, dignissimos asperiores facere deleniti laboriosam minus rem quo dolorum fuga.`</div>
+                    <div id="img-container">adaaw</div>
+                </div>
+                <div class="col s6" id="meal-info">
+                    <h2>
+                        Meal Option
+                    </h2>
+                    <div id="text-container">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ullam eligendi accusantium quos placeat officia consequatur ducimus sed quibusdam temporibus sit excepturi, similique perspiciatis atque itaque repellat labore laborum reiciendis!</div>
+                    <div id="img-container">alkklakak</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="media">
+        <div class="container">
+            <div class="row">
+                
+            </div>
+
+        </div>
+    </section>
+
 </body>
 </html>

@@ -1,90 +1,105 @@
 header {
-    background-image: url("https://floridatrippers.com/wp-content/uploads/2020/09/date-night-in-orlando-wine-1600x900.jpg");
-    padding: 30px;
-    font-weight:700;
+  background-image: url('https://floridatrippers.com/wp-content/uploads/2020/09/date-night-in-orlando-wine-1600x900.jpg');
+  padding: 30px;
+  font-weight: 700;
 }
 
 header h1 {
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: white;
 }
 
 header p {
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: white;
 }
 
 body {
-    background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
 }
 
 #our-purpose {
-    text-align: center;
-    padding: 40px;
-    border-bottom: 2px solid black;
-    margin: 0px 40px
+  text-align: center;
+  padding: 40px;
+  border-bottom: 2px solid black;
+  margin: 0px 40px;
 }
 
-#our-purpose h2{
-    font-size: 40px;
+#our-purpose h2 {
+  font-size: 40px;
 }
 
 #our-purpose p {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 #get-started {
-    text-align: center;
+  text-align: center;
 }
 
-#get-started h2{
-    font-size: 36px;
+#get-started h2 {
+  font-size: 36px;
 }
 
 #meal-matches {
-    text-align: center;
+  text-align: center;
 }
 
 #meal-matches h3 {
-    font-size: 32px;
+  font-size: 32px;
 }
 
 #media {
-    text-align: center;
-    align-items: center;
+  text-align: center;
+  align-items: center;
 }
 
-#media ul li a{
-    color: black;
+#media ul li a {
+  color: black;
 }
 
-#media-menu { margin:0; padding:0; }
-#media-menu li { background:rgb(255, 255, 255); }
-#media-menu li a { display:inline-block; padding:8px }
-#media-menu li a:hover { background:#ccc; }
 #media-menu {
-    align-items: center;
+  margin: 0;
+  padding: 0;
+}
+#media-menu li {
+  background: rgb(255, 255, 255);
+}
+#media-menu li a {
+  display: inline-block;
+  padding: 8px;
+}
+#media-menu li a:hover {
+  background: #ccc;
+}
+#media-menu {
+  align-items: center;
 }
 
 #media h3 {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .container {
-    background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
 }
 
 .nav {
-    color: white;
-    background-color: salmon;
-    margin-top: 100px;
+  color: white;
+  background-color: salmon;
+  margin-top: 100px;
 }
 
 nav ul li a :hover {
-    color: white;
-    background-color: rgb(252, 96, 79);
+  color: white;
+  background-color: rgb(252, 96, 79);
 }
 
 footer h5 {
-    font-size: 12px;
+  font-size: 12px;
+}
+
+.browser-default {
+  width: 20%;
+  margin: auto;
 }

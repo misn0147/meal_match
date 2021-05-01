@@ -21,13 +21,31 @@ function showFood() {
         // inputs random array number into array to grab idMeal for next API fetch call
         var randomMealId = response.meals[randomMealArrayNumber].idMeal;
     
-        // fetches food menu item from search to display a single meal
+        // use randomMealId to fetch random food menu item from array to display a single meal
         return fetch ('https:www.themealdb.com/api/json/v1/1/lookup.php?i=' + randomMealId )
     })
     .then(function(foodResult) {
         return foodResult.json();
     })
+//DISPLAY FOOD ON PAGE
     .then(function(foodResult) {
         console.log(foodResult);
+
+    // Display selected food title on page
+    var foodTitle = foodResult.meals[0].strMeal;
+    $("#food-title-container").text(foodTitle);
+
+    //Display selected food website link on page
+    var foodSite = foodResult.meals[0].strSource;
+    $("#food-link").attr("href", foodSite).text("Click here for recipe!");
+
+    // Create a variable that will select the <div> where the food image will be displayed
+        var imgContainerEl = document.querySelector('#food-container');
+    // Empty out the <div> before we append a GIF to it
+        imgContainerEl.innerHTML = '';
+        var foodImg = document.createElement('img');
+        foodImg.setAttribute('src', foodResult.meals[0].strMealThumb);
+    // Append 'foodImg' to the <div>
+        imgContainerEl.appendChild(foodImg);
     })
 }

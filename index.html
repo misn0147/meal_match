@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/f4a393c93b.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <title>Document</title>
     </head>
     <body>
@@ -20,7 +21,7 @@
                 <li>
                     <a href="#our-purpose">Our Purpose</a>
                 </li>
-                 <li>
+                <li>
                     <a href="#get-started">Get Started</a>
                 </li>
                 <li>
@@ -45,7 +46,7 @@
             <div>
                 <h2>Get Started!</h2>
                 <label for ="category">Select A Category:</label>
-                <select category ="category" id="pickc">
+                <select class = "browser-default" category ="category" id="pickc">
                     <option value="beef">Beef</option>
                     <option value="chicken">Chicken</option>
                     <option value="lamb">Lamb</option>
@@ -67,15 +68,16 @@
                         <h3>
                             Drink Option
                         </h3>
-                        <div id="text-container">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad expedita perferendis fugit tempore recusandae beatae odio! Eum quae repellat tenetur, dignissimos asperiores facere deleniti laboriosam minus rem quo dolorum fuga.`</div>
-                        <div id="img-container">adaaw</div>
+                        <div id="drink-title-container">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad expedita perferendis fugit tempore recusandae beatae odio! Eum quae repellat tenetur, dignissimos asperiores facere deleniti laboriosam minus rem quo dolorum fuga.`</div>
+                        <div id="drink-container">adaaw</div>
                     </div>
                     <div class="col s6" id="meal-info">
                         <h3>
                             Meal Option
                         </h3>
-                        <div id="text-container">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ullam eligendi accusantium quos placeat officia consequatur ducimus sed quibusdam temporibus sit excepturi, similique perspiciatis atque itaque repellat labore laborum reiciendis!</div>
-                        <div id="img-container">alkklakak</div>
+                        <div id="food-title-container"></div>
+                        <a href id="food-link" target="_blank"></a>
+                        <div id="food-container"></div>
                     </div>
                 </div>
             </div>

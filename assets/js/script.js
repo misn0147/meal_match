@@ -37,7 +37,16 @@ function showFood() {
 
     //Display selected food website link on page
     var foodSite = foodResult.meals[0].strSource;
-    $("#food-link").attr("href", foodSite).text("Click here for recipe!");
+    var foodYouTube = foodResult.meals[0].strYoutube;
+    console.log(foodSite);
+    if (foodSite !== null ) {
+        $("#food-link").attr("href", foodSite).text("Click here for recipe!")
+    } else if (foodSite === null, foodYouTube !== null ) {
+        $("#food-link").attr("href", foodYouTube).text("Click here for recipe!")
+    }
+    else if (foodSite === null, foodYouTube === null ){
+        showFood(); 
+    }
 
     // Create a variable that will select the <div> where the food image will be displayed
         var imgContainerEl = document.querySelector('#food-container');

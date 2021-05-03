@@ -103,3 +103,8 @@ footer h5 {
   width: 20%;
   margin: auto;
 }
+
+#drink-btn,
+#food-btn {
+  background-color: rgb(252, 96, 79);
+}

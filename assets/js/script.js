@@ -1,3 +1,10 @@
+//Global
+var searchHistory = [];
+
+//DOM
+var searchInput= document.querySelector('#food-btn','#drink-btn')
+var searchHistoryContainer = document.querySelector('#')
+
 // this funtion runs onclick of TryUsOut button
 function showFood() {
   var inputCategory = document.querySelector('#pickc').value;
@@ -75,3 +82,46 @@ function showDrink() {
       drinkImageEl.appendChild(drinkImg);
     });
 }
+
+function renderSearchHistory() {
+  searchHistoryContainer.innerHTML = '';
+  for (var i = searchHistory.length - 1; i >= 0; i--) {
+    var btn = document.createElement('button');
+    btn.setAttribute('type', 'button');
+    btn.classList.add('history-btn', 'btn-history');
+    btn.setAttribute('data-search', searchHistory[i]);
+    btn.textContent = searchHistory[i];
+    searchHistoryContainer.append(btn);
+  }
+}
+
+function appendToHistory(search) {
+  if (searchHistory.indexOf(search) !== -1) {
+    return;
+  }
+  searchHistory.push(search);
+  localStorage.setItem('search-history', JSON.stringify(searchHistory));
+  renderSearchHistory();
+}
+
+function handleSearchFormSubmit(e) {
+  if (!searchInput.value) {
+    return;
+  }
+  e.preventDefault();
+  var search = searchInput.value.trim();
+  searchInput.value = '';
+}
+
+function handleSearchHistoryClick(e) {
+  if (!e.target.matches('.btn-history')) {
+    return;
+  }
+  var btn = e.target;
+  var search = btn.getAttribute('data-search');
+  fetchCoords(search);
+}
+
+initSearchHistory();
+searchForm.addEventListener('submit', handleSearchFormSubmit);
+searchHistoryContainer.addEventListener('click', handleSearchHistoryClick);

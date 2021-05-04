@@ -1,26 +1,26 @@
 //Global
 var searchHistory = [];
-var saveFoodButtonContainer = document.getElementById("food-save-btn");
-var saveDrinkButtonContainer = document.getElementById("drink-save-btn");
+var saveFoodButtonContainer = document.getElementById('food-save-btn');
+var saveDrinkButtonContainer = document.getElementById('drink-save-btn');
+var foodSave = document.createElement('button');
+var drinkSave = document.createElement('button');
 
 //DOM
-var searchInput= document.querySelector('#food-btn','#drink-btn')
-var searchHistoryContainer = document.querySelector('#')
+var searchInput = document.querySelector('#food-btn', '#drink-btn');
+var searchHistoryContainer = document.querySelector('#');
 
-//creates save button for food 
+//creates save button for food
 function saveFoodSearch() {
-  var foodSave = document.createElement("button");
-  foodSave.setAttribute('class', "waves-effect waves-light btn save-btn");
-  foodSave.textContent = "Click here to save food!";
+  foodSave.setAttribute('class', 'waves-effect waves-light btn save-btn');
+  foodSave.textContent = 'Click here to save food!';
   saveFoodButtonContainer.innerHTML = '';
   saveFoodButtonContainer.appendChild(foodSave);
 }
 
-//creates save button for drink 
+//creates save button for drink
 function saveDrinkSearch() {
-  var drinkSave = document.createElement("button");
-  drinkSave.setAttribute('class', "waves-effect waves-light btn save-btn");
-  drinkSave.textContent = "Click here to save drink!";
+  drinkSave.setAttribute('class', 'waves-effect waves-light btn save-btn');
+  drinkSave.textContent = 'Click here to save drink!';
   saveDrinkButtonContainer.innerHTML = '';
   saveDrinkButtonContainer.appendChild(drinkSave);
 }
@@ -80,8 +80,12 @@ function showFood() {
       foodImg.setAttribute('src', foodResult.meals[0].strMealThumb);
       // Append 'foodImg' to the <div>
       imgContainerEl.appendChild(foodImg);
+
+      foodSave.addEventListener('click', saveLocalFood(foodTitle));
+
+      localStorage.setItem('food-Items', JSON.stringify([]));
     });
-    saveFoodSearch();
+  saveFoodSearch();
 }
 
 function showDrink() {
@@ -111,8 +115,9 @@ function showDrink() {
       drinkRecipe.innerHTML = 'Click here for a recipe!';
       drinkIngredientsEl.appendChild(drinkRecipe);
 
+      localStorage.setItem('drink-items', JSON.stringify([]));
     });
-    saveDrinkSearch();
+  saveDrinkSearch();
 }
 
 function renderSearchHistory() {
@@ -157,3 +162,12 @@ function handleSearchHistoryClick(e) {
 initSearchHistory();
 searchForm.addEventListener('submit', handleSearchFormSubmit);
 searchHistoryContainer.addEventListener('click', handleSearchHistoryClick);
+
+// save foodID/drinkID to local storage on button click
+function saveLocalFood(foodTitle) {
+  var localStorageItems = JSON.parse(localStorage.getItem('food-items'));
+  console.log(localStorageItems);
+  var newFoodSave = localStorageItems.push(foodTitle);
+  console.log(foodTitle);
+  localStorage.setItem('food-items', JSON.stringify(newFoodSave));
+}

@@ -1,9 +1,29 @@
 //Global
 var searchHistory = [];
+var saveFoodButtonContainer = document.getElementById("food-save-btn");
+var saveDrinkButtonContainer = document.getElementById("drink-save-btn");
 
 //DOM
 var searchInput= document.querySelector('#food-btn','#drink-btn')
 var searchHistoryContainer = document.querySelector('#')
+
+//creates save button for food 
+function saveFoodSearch() {
+  var foodSave = document.createElement("button");
+  foodSave.setAttribute('class', "waves-effect waves-light btn save-btn");
+  foodSave.textContent = "Click here to save food!";
+  saveFoodButtonContainer.innerHTML = '';
+  saveFoodButtonContainer.appendChild(foodSave);
+}
+
+//creates save button for drink 
+function saveDrinkSearch() {
+  var drinkSave = document.createElement("button");
+  drinkSave.setAttribute('class', "waves-effect waves-light btn save-btn");
+  drinkSave.textContent = "Click here to save drink!";
+  saveDrinkButtonContainer.innerHTML = '';
+  saveDrinkButtonContainer.appendChild(drinkSave);
+}
 
 // this funtion runs onclick of TryUsOut button
 function showFood() {
@@ -61,6 +81,7 @@ function showFood() {
       // Append 'foodImg' to the <div>
       imgContainerEl.appendChild(foodImg);
     });
+    saveFoodSearch();
 }
 
 function showDrink() {
@@ -90,10 +111,8 @@ function showDrink() {
       drinkRecipe.innerHTML = 'Click here for a recipe!';
       drinkIngredientsEl.appendChild(drinkRecipe);
 
-      var drinkInstructionsEl = document.querySelector('.drink-instructions');
-      var drinkInstructions = drinkResponse.drinks[0].strInstructions;
-      drinkInstructionsEl.innerHTML = drinkInstructions;
     });
+    saveDrinkSearch();
 }
 
 function renderSearchHistory() {

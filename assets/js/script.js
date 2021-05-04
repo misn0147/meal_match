@@ -80,6 +80,19 @@ function showDrink() {
       var drinkImg = document.createElement('img');
       drinkImg.setAttribute('src', drinkResponse.drinks[0].strDrinkThumb);
       drinkImageEl.appendChild(drinkImg);
+
+      var drinkIngredientsEl = document.querySelector('.drink-ingredients');
+      var searchLink = 'http://www.google.com/search?q=';
+      drinkIngredientsEl.innerHTML = '';
+      var drinkRecipe = document.createElement('a');
+      drinkRecipe.setAttribute('href', searchLink + drinkTitle + ' recipe');
+      drinkRecipe.setAttribute('target', '_blank');
+      drinkRecipe.innerHTML = 'Click here for a recipe!';
+      drinkIngredientsEl.appendChild(drinkRecipe);
+
+      var drinkInstructionsEl = document.querySelector('.drink-instructions');
+      var drinkInstructions = drinkResponse.drinks[0].strInstructions;
+      drinkInstructionsEl.innerHTML = drinkInstructions;
     });
 }
 

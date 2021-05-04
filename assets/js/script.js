@@ -85,7 +85,7 @@ function showDrink() {
       var searchLink = 'http://www.google.com/search?q=';
       drinkIngredientsEl.innerHTML = '';
       var drinkRecipe = document.createElement('a');
-      drinkRecipe.setAttribute('href', searchLink + drinkTitle + ' recipe');
+      drinkRecipe.setAttribute('href', searchLink + drinkTitle + ' Drink Recipe');
       drinkRecipe.setAttribute('target', '_blank');
       drinkRecipe.innerHTML = 'Click here for a recipe!';
       drinkIngredientsEl.appendChild(drinkRecipe);

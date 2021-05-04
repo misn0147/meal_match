@@ -115,6 +115,10 @@ footer h5 {
   background-color: rgb(252, 96, 79);
 }
 
+.save-btn {
+  background-color: rgb(79, 252, 79);
+}
+
 #drink-container , #food-container {
   display: flex;
   flex-wrap: wrap;

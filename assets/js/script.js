@@ -1,4 +1,10 @@
 //Global
+var drinkResponse = "";
+var drinkItems = 'drink-items';
+const key= drinkResponse;
+btnInsert = document.getElementById("food-save-btn" , "drink-save-btn")
+const value= document.getElementById("");
+
 var searchHistory = [];
 var saveFoodButtonContainer = document.getElementById('food-save-btn');
 var saveDrinkButtonContainer = document.getElementById('drink-save-btn');
@@ -6,8 +12,6 @@ var foodSave = document.createElement('button');
 var drinkSave = document.createElement('button');
 
 //DOM
-var searchInput = document.querySelector('#food-btn', '#drink-btn');
-var searchHistoryContainer = document.querySelector('#');
 
 //creates save button for food
 function saveFoodSearch() {
@@ -80,8 +84,7 @@ function showFood() {
       foodImg.setAttribute('src', foodResult.meals[0].strMealThumb);
       // Append 'foodImg' to the <div>
       imgContainerEl.appendChild(foodImg);
-
-      foodSave.addEventListener('click', saveLocalFood(foodTitle));
+      saveLocalFood = localStorage;
 
       localStorage.setItem('food-Items', JSON.stringify([]));
     });
@@ -120,54 +123,33 @@ function showDrink() {
   saveDrinkSearch();
 }
 
-function renderSearchHistory() {
-  searchHistoryContainer.innerHTML = '';
-  for (var i = searchHistory.length - 1; i >= 0; i--) {
-    var btn = document.createElement('button');
-    btn.setAttribute('type', 'button');
-    btn.classList.add('history-btn', 'btn-history');
-    btn.setAttribute('data-search', searchHistory[i]);
-    btn.textContent = searchHistory[i];
-    searchHistoryContainer.append(btn);
-  }
-}
-
-function appendToHistory(search) {
-  if (searchHistory.indexOf(search) !== -1) {
-    return;
-  }
-  searchHistory.push(search);
-  localStorage.setItem('search-history', JSON.stringify(searchHistory));
-  renderSearchHistory();
-}
-
-function handleSearchFormSubmit(e) {
-  if (!searchInput.value) {
-    return;
-  }
-  e.preventDefault();
-  var search = searchInput.value.trim();
-  searchInput.value = '';
-}
-
-function handleSearchHistoryClick(e) {
-  if (!e.target.matches('.btn-history')) {
-    return;
-  }
-  var btn = e.target;
-  var search = btn.getAttribute('data-search');
-  fetchCoords(search);
-}
-
-initSearchHistory();
-searchForm.addEventListener('submit', handleSearchFormSubmit);
-searchHistoryContainer.addEventListener('click', handleSearchHistoryClick);
-
+console.log(localStorage);
 // save foodID/drinkID to local storage on button click
-function saveLocalFood(foodTitle) {
-  var localStorageItems = JSON.parse(localStorage.getItem('food-items'));
-  console.log(localStorageItems);
-  var newFoodSave = localStorageItems.push(foodTitle);
-  console.log(foodTitle);
-  localStorage.setItem('food-items', JSON.stringify(newFoodSave));
+
+//set const vars
+
+//DOM
+
+
+
+const sbtn= document.getElementById("sbtn");
+const lsOutput = document.getElementById("lsOutput")
+console.log(drinkResponse);
+btnInsert.onClick = function () {
+  
+  const key = drinkResponse.value;
+  const value= inpValue.value;
+  
+  if (key && value){
+    localStorage.setItem(key,value);
+  }
+
+  for (i = 0; i < localStorage.length; i++){
+    const key= localStorage.key(i);
+    const value= localStorage.getItem(key);
+
+    lsOutput.innerHTML += `${key}:${value}`;
+  }
+  drinkItems.push(drinkResponse);
 }
+

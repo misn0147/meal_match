@@ -51,7 +51,7 @@ function showFood() {
       var randomMealId = response.meals[randomMealArrayNumber].idMeal;
 
       // use randomMealId to fetch random food menu item from array to display a single meal
-      return fetch('https:www.themealdb.com/api/json/v1/1/lookup.php?i=' + randomMealId);
+      return fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + randomMealId);
     })
     .then(function (foodResult) {
       return foodResult.json();

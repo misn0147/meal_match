@@ -1,9 +1,33 @@
 //Global
+var drinkResponse = "";
+var drinkItems = 'drink-items';
+const key= drinkResponse;
+btnInsert = document.getElementById("food-save-btn" , "drink-save-btn")
+const value= document.getElementById("");
+
 var searchHistory = [];
+var saveFoodButtonContainer = document.getElementById('food-save-btn');
+var saveDrinkButtonContainer = document.getElementById('drink-save-btn');
+var foodSave = document.createElement('button');
+var drinkSave = document.createElement('button');
 
 //DOM
-var searchInput= document.querySelector('#food-btn','#drink-btn')
-var searchHistoryContainer = document.querySelector('#')
+
+//creates save button for food
+function saveFoodSearch() {
+  foodSave.setAttribute('class', 'waves-effect waves-light btn save-btn');
+  foodSave.textContent = 'Click here to save food!';
+  saveFoodButtonContainer.innerHTML = '';
+  saveFoodButtonContainer.appendChild(foodSave);
+}
+
+//creates save button for drink
+function saveDrinkSearch() {
+  drinkSave.setAttribute('class', 'waves-effect waves-light btn save-btn');
+  drinkSave.textContent = 'Click here to save drink!';
+  saveDrinkButtonContainer.innerHTML = '';
+  saveDrinkButtonContainer.appendChild(drinkSave);
+}
 
 // this funtion runs onclick of TryUsOut button
 function showFood() {
@@ -60,7 +84,11 @@ function showFood() {
       foodImg.setAttribute('src', foodResult.meals[0].strMealThumb);
       // Append 'foodImg' to the <div>
       imgContainerEl.appendChild(foodImg);
+      saveLocalFood = localStorage;
+
+      localStorage.setItem('food-Items', JSON.stringify([]));
     });
+  saveFoodSearch();
 }
 
 function showDrink() {
@@ -90,51 +118,38 @@ function showDrink() {
       drinkRecipe.innerHTML = 'Click here for a recipe!';
       drinkIngredientsEl.appendChild(drinkRecipe);
 
-      var drinkInstructionsEl = document.querySelector('.drink-instructions');
-      var drinkInstructions = drinkResponse.drinks[0].strInstructions;
-      drinkInstructionsEl.innerHTML = drinkInstructions;
+      localStorage.setItem('drink-items', JSON.stringify([]));
     });
+  saveDrinkSearch();
 }
 
-function renderSearchHistory() {
-  searchHistoryContainer.innerHTML = '';
-  for (var i = searchHistory.length - 1; i >= 0; i--) {
-    var btn = document.createElement('button');
-    btn.setAttribute('type', 'button');
-    btn.classList.add('history-btn', 'btn-history');
-    btn.setAttribute('data-search', searchHistory[i]);
-    btn.textContent = searchHistory[i];
-    searchHistoryContainer.append(btn);
+console.log(localStorage);
+// save foodID/drinkID to local storage on button click
+
+//set const vars
+
+//DOM
+
+
+
+const sbtn= document.getElementById("sbtn");
+const lsOutput = document.getElementById("lsOutput")
+console.log(drinkResponse);
+btnInsert.onClick = function () {
+  
+  const key = drinkResponse.value;
+  const value= inpValue.value;
+  
+  if (key && value){
+    localStorage.setItem(key,value);
   }
-}
 
-function appendToHistory(search) {
-  if (searchHistory.indexOf(search) !== -1) {
-    return;
+  for (i = 0; i < localStorage.length; i++){
+    const key= localStorage.key(i);
+    const value= localStorage.getItem(key);
+
+    lsOutput.innerHTML += `${key}:${value}`;
   }
-  searchHistory.push(search);
-  localStorage.setItem('search-history', JSON.stringify(searchHistory));
-  renderSearchHistory();
+  drinkItems.push(drinkResponse);
 }
 
-function handleSearchFormSubmit(e) {
-  if (!searchInput.value) {
-    return;
-  }
-  e.preventDefault();
-  var search = searchInput.value.trim();
-  searchInput.value = '';
-}
-
-function handleSearchHistoryClick(e) {
-  if (!e.target.matches('.btn-history')) {
-    return;
-  }
-  var btn = e.target;
-  var search = btn.getAttribute('data-search');
-  fetchCoords(search);
-}
-
-initSearchHistory();
-searchForm.addEventListener('submit', handleSearchFormSubmit);
-searchHistoryContainer.addEventListener('click', handleSearchHistoryClick);

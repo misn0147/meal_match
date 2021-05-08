@@ -1,9 +1,9 @@
 //Global
-var drinkResponse = "";
+var drinkResponse = '';
 var drinkItems = 'drink-items';
-const key= drinkResponse;
+const key = drinkResponse;
 // var btnInsert = document.getElementById("food-save-btn" , "drink-save-btn")
-const value= document.getElementById("");
+const value = document.getElementById('');
 
 var searchHistory = [];
 var saveFoodButtonContainer = document.getElementById('food-save-btn');
@@ -13,46 +13,44 @@ var saveDrinkButtonContainer = document.getElementById('drink-save-btn');
 
 //DOM
 
-
 //creates save button for food
-function saveFoodSearch(foodName,foodLink) {
+function saveFoodSearch(foodName, foodLink) {
   var foodSave = document.createElement('button');
   foodSave.setAttribute('class', 'waves-effect waves-light btn save-btn');
   foodSave.textContent = 'Click here to save food!';
   saveFoodButtonContainer.innerHTML = '';
 
-  foodSave.onclick = function(){
+  foodSave.onclick = function () {
     // get from local storage to know what already exists
     var existingSavedFoods = localStorage.getItem('food-Items');
     console.log(existingSavedFoods);
     if (existingSavedFoods) {
       //if local storage for drink items is already an array, push new items to that array
-      var parsedFoods = JSON.parse(localStorage.getItem("food-Items"));
-      parsedFoods.push({foodName,foodLink});
+      var parsedFoods = JSON.parse(localStorage.getItem('food-Items'));
+      parsedFoods.push({ foodName, foodLink });
       localStorage.setItem('food-Items', JSON.stringify(parsedFoods));
       getSavedFoods(parsedFoods);
     } else {
       //if there are no items saved yet, create new array with name of item
-      localStorage.setItem('food-Items', JSON.stringify([{foodName,foodLink}]));
+      localStorage.setItem('food-Items', JSON.stringify([{ foodName, foodLink }]));
     }
   };
   saveFoodButtonContainer.appendChild(foodSave);
 }
 
 function getSavedFoods(foodList) {
-  var recipeList = document.getElementById("recipe-list");
-  for (i=0; i < foodList.length; i++) {
-    console.log(foodList[i].foodName,foodList[i].foodLink);
+  var recipeList = document.getElementById('recipe-list');
+  for (i = 0; i < foodList.length; i++) {
+    console.log(foodList[i].foodName, foodList[i].foodLink);
     var listFoodItem = document.createElement('li');
     var listFoodATag = document.createElement('a');
     listFoodATag.textContent = foodList[i].foodName;
     listFoodATag.setAttribute('href', foodList[i].foodLink);
+    listFoodATag.setAttribute('class', 'food-list-item');
     listFoodItem.append(listFoodATag);
     recipeList.append(listFoodItem);
+  }
 }
-};
-
-
 
 //creates save button for drink
 function saveDrinkSearch(drinkName) {
@@ -61,13 +59,13 @@ function saveDrinkSearch(drinkName) {
   drinkSave.textContent = 'Click here to save drink!';
   saveDrinkButtonContainer.innerHTML = '';
 
-  drinkSave.onclick = function(){
+  drinkSave.onclick = function () {
     // get from local storage to know what already exists
     var existingSavedDrinks = localStorage.getItem('drink-Items');
     console.log(existingSavedDrinks);
     if (existingSavedDrinks) {
       //if local storage for drink items is already an array, push new items to that array
-      var parsedDrinks = JSON.parse(localStorage.getItem("drink-Items"));
+      var parsedDrinks = JSON.parse(localStorage.getItem('drink-Items'));
       parsedDrinks.push(drinkName);
       localStorage.setItem('drink-Items', JSON.stringify(parsedDrinks));
     } else {
@@ -134,9 +132,7 @@ function showFood() {
       // Append 'foodImg' to the <div>
       imgContainerEl.appendChild(foodImg);
       saveLocalFood = localStorage;
-      saveFoodSearch(foodTitle,foodSite);
-
-    
+      saveFoodSearch(foodTitle, foodSite);
     });
 }
 
@@ -169,7 +165,6 @@ function showDrink() {
 
       saveDrinkSearch(drinkTitle);
     });
-  
 }
 
 console.log(localStorage);
@@ -179,16 +174,14 @@ console.log(localStorage);
 
 //DOM
 
-
-
-const sbtn= document.getElementById("sbtn");
-const lsOutput = document.getElementById("lsOutput")
+const sbtn = document.getElementById('sbtn');
+const lsOutput = document.getElementById('lsOutput');
 console.log(drinkResponse);
 // btnInsert.onClick = function () {
-  
+
 //   const key = drinkResponse.value;
 //   const value= inpValue.value;
-  
+
 //   if (key && value){
 //     localStorage.setItem(key,value);
 //   }
@@ -201,4 +194,3 @@ console.log(drinkResponse);
 //   }
 //   drinkItems.push(drinkResponse);
 // }
-

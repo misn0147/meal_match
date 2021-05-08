@@ -2,30 +2,58 @@
 var drinkResponse = "";
 var drinkItems = 'drink-items';
 const key= drinkResponse;
-btnInsert = document.getElementById("food-save-btn" , "drink-save-btn")
+// var btnInsert = document.getElementById("food-save-btn" , "drink-save-btn")
 const value= document.getElementById("");
 
 var searchHistory = [];
 var saveFoodButtonContainer = document.getElementById('food-save-btn');
 var saveDrinkButtonContainer = document.getElementById('drink-save-btn');
-var foodSave = document.createElement('button');
-var drinkSave = document.createElement('button');
+// var foodSave = document.createElement('button');
+// var drinkSave = document.createElement('button');
 
 //DOM
 
 //creates save button for food
-function saveFoodSearch() {
+function saveFoodSearch(foodName) {
+  var foodSave = document.createElement('button');
   foodSave.setAttribute('class', 'waves-effect waves-light btn save-btn');
   foodSave.textContent = 'Click here to save food!';
   saveFoodButtonContainer.innerHTML = '';
+
+  foodSave.onclick = function(){
+    // get from local storage to know what already exists
+    var existingSavedFoods = localStorage.getItem('food-Items');
+    console.log(existingSavedFoods);
+    if (existingSavedFoods) {
+      var parsedFoods = JSON.parse(localStorage.getItem("food-Items"));
+      parsedFoods.push(foodName);
+      localStorage.setItem('food-Items', JSON.stringify(parsedFoods));
+    } else {
+      localStorage.setItem('food-Items', JSON.stringify([foodName]));
+    }
+  };
   saveFoodButtonContainer.appendChild(foodSave);
 }
 
 //creates save button for drink
-function saveDrinkSearch() {
+function saveDrinkSearch(drinkName) {
+  var drinkSave = document.createElement('button');
   drinkSave.setAttribute('class', 'waves-effect waves-light btn save-btn');
   drinkSave.textContent = 'Click here to save drink!';
   saveDrinkButtonContainer.innerHTML = '';
+
+  drinkSave.onclick = function(){
+    // get from local storage to know what already exists
+    var existingSavedDrinks = localStorage.getItem('drink-Items');
+    console.log(existingSavedDrinks);
+    if (existingSavedDrinks) {
+      var parsedDrinks = JSON.parse(localStorage.getItem("drink-Items"));
+      parsedDrinks.push(drinkName);
+      localStorage.setItem('drink-Items', JSON.stringify(parsedDrinks));
+    } else {
+      localStorage.setItem('drink-Items', JSON.stringify([drinkName]));
+    }
+  };
   saveDrinkButtonContainer.appendChild(drinkSave);
 }
 
@@ -51,7 +79,7 @@ function showFood() {
       var randomMealId = response.meals[randomMealArrayNumber].idMeal;
 
       // use randomMealId to fetch random food menu item from array to display a single meal
-      return fetch('https:www.themealdb.com/api/json/v1/1/lookup.php?i=' + randomMealId);
+      return fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + randomMealId);
     })
     .then(function (foodResult) {
       return foodResult.json();
@@ -85,10 +113,11 @@ function showFood() {
       // Append 'foodImg' to the <div>
       imgContainerEl.appendChild(foodImg);
       saveLocalFood = localStorage;
+      saveFoodSearch(foodTitle);
 
-      localStorage.setItem('food-Items', JSON.stringify([]));
+    
     });
-  saveFoodSearch();
+  // saveFoodSearch();
 }
 
 function showDrink() {
@@ -118,9 +147,9 @@ function showDrink() {
       drinkRecipe.innerHTML = 'Click here for a recipe!';
       drinkIngredientsEl.appendChild(drinkRecipe);
 
-      localStorage.setItem('drink-items', JSON.stringify([]));
+      saveDrinkSearch(drinkTitle);
     });
-  saveDrinkSearch();
+  
 }
 
 console.log(localStorage);
@@ -135,21 +164,21 @@ console.log(localStorage);
 const sbtn= document.getElementById("sbtn");
 const lsOutput = document.getElementById("lsOutput")
 console.log(drinkResponse);
-btnInsert.onClick = function () {
+// btnInsert.onClick = function () {
   
-  const key = drinkResponse.value;
-  const value= inpValue.value;
+//   const key = drinkResponse.value;
+//   const value= inpValue.value;
   
-  if (key && value){
-    localStorage.setItem(key,value);
-  }
+//   if (key && value){
+//     localStorage.setItem(key,value);
+//   }
 
-  for (i = 0; i < localStorage.length; i++){
-    const key= localStorage.key(i);
-    const value= localStorage.getItem(key);
+//   for (i = 0; i < localStorage.length; i++){
+//     const key= localStorage.key(i);
+//     const value= localStorage.getItem(key);
 
-    lsOutput.innerHTML += `${key}:${value}`;
-  }
-  drinkItems.push(drinkResponse);
-}
+//     lsOutput.innerHTML += `${key}:${value}`;
+//   }
+//   drinkItems.push(drinkResponse);
+// }
 

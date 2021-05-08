@@ -25,10 +25,12 @@ function saveFoodSearch(foodName) {
     var existingSavedFoods = localStorage.getItem('food-Items');
     console.log(existingSavedFoods);
     if (existingSavedFoods) {
+      //if local storage for drink items is already an array, push new items to that array
       var parsedFoods = JSON.parse(localStorage.getItem("food-Items"));
       parsedFoods.push(foodName);
       localStorage.setItem('food-Items', JSON.stringify(parsedFoods));
     } else {
+      //if there are no items saved yet, create new array with name of item
       localStorage.setItem('food-Items', JSON.stringify([foodName]));
     }
   };
@@ -47,10 +49,12 @@ function saveDrinkSearch(drinkName) {
     var existingSavedDrinks = localStorage.getItem('drink-Items');
     console.log(existingSavedDrinks);
     if (existingSavedDrinks) {
+      //if local storage for drink items is already an array, push new items to that array
       var parsedDrinks = JSON.parse(localStorage.getItem("drink-Items"));
       parsedDrinks.push(drinkName);
       localStorage.setItem('drink-Items', JSON.stringify(parsedDrinks));
     } else {
+      //if there are no items saved yet, create new array with name of item
       localStorage.setItem('drink-Items', JSON.stringify([drinkName]));
     }
   };

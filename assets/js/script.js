@@ -54,7 +54,6 @@ function getSavedFoods(foodList) {
     listFoodItem.append(listFoodATag);
     recipeList.append(listFoodItem);
   }
-}
 };
 
 
@@ -81,6 +80,7 @@ drinkSave.onclick = function(){
     }
   };
   saveDrinkButtonContainer.appendChild(drinkSave);
+}
 };
 
 

@@ -64,9 +64,8 @@ function saveDrinkSearch(drinkName) {
   drinkSave.textContent = 'Click here to save drink!';
   saveDrinkButtonContainer.innerHTML = '';
 
-  drinkSave.onclick = function () {
-    // get from local storage to know what already exists
-drinkSave.onclick = function(){
+
+  drinkSave.onclick = function(){
     // get from local storage to know what already exists
     var parsedDrinks = JSON.parse(localStorage.getItem("drink-Items"));
     console.log(parsedDrinks);
@@ -80,7 +79,6 @@ drinkSave.onclick = function(){
     }
   };
   saveDrinkButtonContainer.appendChild(drinkSave);
-}
 };
 
 

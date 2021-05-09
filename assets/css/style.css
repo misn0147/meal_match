@@ -134,7 +134,8 @@ footer h5 {
 #drink-list {
   list-style: none;
 }
-.food-list-item {
+.food-list-item,
+.drink-list-item {
   color: white;
   text-decoration: underline;
   background-color: rgb(252, 96, 79, 0.7);
@@ -153,6 +154,7 @@ footer h5 {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 /* Media Queries */

@@ -104,7 +104,8 @@ footer h5 {
   margin: auto;
 }
 
-#drink-title-container , #food-title-container {
+#drink-title-container,
+#food-title-container {
   font-size: 15px;
   font-weight: 700;
   font-style: italic;
@@ -115,11 +116,8 @@ footer h5 {
   background-color: rgb(252, 96, 79);
 }
 
-.save-btn {
-  background-color: rgb(79, 252, 79);
-}
-
-#drink-container , #food-container {
+#drink-container,
+#food-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -130,11 +128,40 @@ footer h5 {
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  
 }
 
-@media screen and (min-width:981px) {
-  #drink-container img , #food-container img {
+#recipe-list,
+#drink-list {
+  list-style: none;
+}
+.food-list-item,
+.drink-list-item {
+  color: white;
+  text-decoration: underline;
+  background-color: rgb(252, 96, 79, 0.7);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.food-list-item:hover {
+  background-color: rgb(252, 96, 79);
+  transition: 0.25s;
+}
+
+.food-save-list,
+.drink-save-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 981px) {
+  #drink-container img,
+  #food-container img {
     display: flex;
     max-width: 100%;
     max-height: 100%;
@@ -169,9 +196,7 @@ footer h5 {
     max-width: 100%;
     max-height: 100%;
   }
-
 }
-
 
 @media screen and (max-width: 768px) {
   header {
@@ -195,13 +220,13 @@ footer h5 {
     font-size: 12px;
   }
 
-  #drink-container img , #food-container img {
+  #drink-container img,
+  #food-container img {
     display: flex;
     max-width: 100%;
     max-height: 100%;
     flex-wrap: wrap;
   }
-
 }
 
 @media screen and (max-width: 575px) {
@@ -226,11 +251,11 @@ footer h5 {
     font-size: 12px;
   }
 
-  #drink-container img , #food-container img {
+  #drink-container img,
+  #food-container img {
     display: flex;
     max-width: 100%;
     max-height: 100%;
     flex-wrap: wrap;
   }
-
 }

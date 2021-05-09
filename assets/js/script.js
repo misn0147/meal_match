@@ -2,16 +2,13 @@
 var drinkResponse = "";
 var drinkItems = 'drink-items';
 const key= drinkResponse;
-// var btnInsert = document.getElementById("food-save-btn" , "drink-save-btn")
+
+
 const value= document.getElementById("");
 
 var searchHistory = [];
 var saveFoodButtonContainer = document.getElementById('food-save-btn');
 var saveDrinkButtonContainer = document.getElementById('drink-save-btn');
-// var foodSave = document.createElement('button');
-// var drinkSave = document.createElement('button');
-
-//DOM
 
 
 //creates save button for food
@@ -21,23 +18,26 @@ function saveFoodSearch(foodName,foodLink) {
   foodSave.textContent = 'Click here to save food!';
   saveFoodButtonContainer.innerHTML = '';
 
+
   foodSave.onclick = function(){
     // get from local storage to know what already exists
     var existingSavedFoods = localStorage.getItem('food-Items');
     console.log(existingSavedFoods);
-    if (existingSavedFoods) {
-      //if local storage for drink items is already an array, push new items to that array
+    if (existingSavedFoods === null) {
+      //if there are no items saved yet, create new array with name of item and link
+      localStorage.setItem('food-Items', JSON.stringify([{foodName,foodLink}]));
+      var singleFood = JSON.parse(localStorage.getItem("food-Items"));
+      getSavedFoods(singleFood);
+    } else {
+      //if local storage for food items is already an array, push new items to that array
       var parsedFoods = JSON.parse(localStorage.getItem("food-Items"));
       parsedFoods.push({foodName,foodLink});
       localStorage.setItem('food-Items', JSON.stringify(parsedFoods));
       getSavedFoods(parsedFoods);
-    } else {
-      //if there are no items saved yet, create new array with name of item
-      localStorage.setItem('food-Items', JSON.stringify([{foodName,foodLink}]));
     }
   };
   saveFoodButtonContainer.appendChild(foodSave);
-}
+};
 
 function getSavedFoods(foodList) {
   var recipeList = document.getElementById("recipe-list");
@@ -47,12 +47,11 @@ function getSavedFoods(foodList) {
     var listFoodATag = document.createElement('a');
     listFoodATag.textContent = foodList[i].foodName;
     listFoodATag.setAttribute('href', foodList[i].foodLink);
+    listFoodATag.setAttribute('target', '_blank');
     listFoodItem.append(listFoodATag);
     recipeList.append(listFoodItem);
 }
 };
-
-
 
 //creates save button for drink
 function saveDrinkSearch(drinkName) {
@@ -63,31 +62,29 @@ function saveDrinkSearch(drinkName) {
 
   drinkSave.onclick = function(){
     // get from local storage to know what already exists
-    var existingSavedDrinks = localStorage.getItem('drink-Items');
-    console.log(existingSavedDrinks);
-    if (existingSavedDrinks) {
-      //if local storage for drink items is already an array, push new items to that array
-      var parsedDrinks = JSON.parse(localStorage.getItem("drink-Items"));
-      parsedDrinks.push(drinkName);
-      localStorage.setItem('drink-Items', JSON.stringify(parsedDrinks));
-    } else {
+    var parsedDrinks = JSON.parse(localStorage.getItem("drink-Items"));
+    console.log(parsedDrinks);
+    if (parsedDrinks === null) {
       //if there are no items saved yet, create new array with name of item
-      localStorage.setItem('drink-Items', JSON.stringify([drinkName]));
+      localStorage.setItem('drink-Items', JSON.stringify([{drinkName}]));      
+    } else {
+      //if local storage for drink items is already an array, push new items to that arra
+      parsedDrinks.push({drinkName});
+      localStorage.setItem('drink-Items', JSON.stringify(parsedDrinks));
     }
   };
   saveDrinkButtonContainer.appendChild(drinkSave);
-}
+};
+
 
 // this funtion runs onclick of TryUsOut button
 function showFood() {
   var inputCategory = document.querySelector('#pickc').value;
-  console.log(inputCategory);
   fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + inputCategory)
     .then(function (response) {
       return response.json();
     })
     .then(function (response) {
-      console.log(response);
 
       //gets a random number between 0 - length of the array of all meal items per category (ex: beef has 37 items, vegan has 3 items)
       function randomNumber(min, max) {
@@ -107,7 +104,6 @@ function showFood() {
     })
     //DISPLAY FOOD ON PAGE
     .then(function (foodResult) {
-      console.log(foodResult);
 
       // Display selected food title on page
       var foodTitle = foodResult.meals[0].strMeal;
@@ -116,7 +112,6 @@ function showFood() {
       //Display selected food website link on page
       var foodSite = foodResult.meals[0].strSource;
       var foodYouTube = foodResult.meals[0].strYoutube;
-      console.log(foodSite);
       if (foodSite !== null) {
         $('#food-link').attr('href', foodSite).text('Click here for recipe!');
       } else if ((foodSite === null, foodYouTube !== null)) {
@@ -135,8 +130,6 @@ function showFood() {
       imgContainerEl.appendChild(foodImg);
       saveLocalFood = localStorage;
       saveFoodSearch(foodTitle,foodSite);
-
-    
     });
 }
 
@@ -146,10 +139,8 @@ function showDrink() {
       return drinkResponse.json();
     })
     .then(function (drinkResponse) {
-      console.log(drinkResponse);
 
       var drinkTitle = drinkResponse.drinks[0].strDrink;
-      console.log(drinkTitle);
       $('#drink-title-container').text(drinkTitle);
 
       var drinkImageEl = document.querySelector('#drink-container');
@@ -173,32 +164,10 @@ function showDrink() {
 }
 
 console.log(localStorage);
-// save foodID/drinkID to local storage on button click
 
-//set const vars
-
-//DOM
 
 
 
 const sbtn= document.getElementById("sbtn");
 const lsOutput = document.getElementById("lsOutput")
 console.log(drinkResponse);
-// btnInsert.onClick = function () {
-  
-//   const key = drinkResponse.value;
-//   const value= inpValue.value;
-  
-//   if (key && value){
-//     localStorage.setItem(key,value);
-//   }
-
-//   for (i = 0; i < localStorage.length; i++){
-//     const key= localStorage.key(i);
-//     const value= localStorage.getItem(key);
-
-//     lsOutput.innerHTML += `${key}:${value}`;
-//   }
-//   drinkItems.push(drinkResponse);
-// }
-

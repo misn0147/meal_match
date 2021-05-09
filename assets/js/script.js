@@ -1,22 +1,24 @@
 //Global
-var drinkResponse = "";
+var drinkResponse = '';
 var drinkItems = 'drink-items';
+
 const key= drinkResponse;
 
 
 const value= document.getElementById("");
 
+
 var searchHistory = [];
 var saveFoodButtonContainer = document.getElementById('food-save-btn');
 var saveDrinkButtonContainer = document.getElementById('drink-save-btn');
 
-
 //creates save button for food
-function saveFoodSearch(foodName,foodLink) {
+function saveFoodSearch(foodName, foodLink) {
   var foodSave = document.createElement('button');
   foodSave.setAttribute('class', 'waves-effect waves-light btn save-btn');
   foodSave.textContent = 'Click here to save food!';
   saveFoodButtonContainer.innerHTML = '';
+
 
 
   foodSave.onclick = function(){
@@ -40,18 +42,21 @@ function saveFoodSearch(foodName,foodLink) {
 };
 
 function getSavedFoods(foodList) {
-  var recipeList = document.getElementById("recipe-list");
-  for (i=0; i < foodList.length; i++) {
-    console.log(foodList[i].foodName,foodList[i].foodLink);
+  var recipeList = document.getElementById('recipe-list');
+  for (i = 0; i < foodList.length; i++) {
+    console.log(foodList[i].foodName, foodList[i].foodLink);
     var listFoodItem = document.createElement('li');
     var listFoodATag = document.createElement('a');
     listFoodATag.textContent = foodList[i].foodName;
     listFoodATag.setAttribute('href', foodList[i].foodLink);
     listFoodATag.setAttribute('target', '_blank');
+    listFoodATag.setAttribute('class', 'food-list-item');
     listFoodItem.append(listFoodATag);
     recipeList.append(listFoodItem);
+  }
 }
 };
+
 
 //creates save button for drink
 function saveDrinkSearch(drinkName) {
@@ -60,7 +65,9 @@ function saveDrinkSearch(drinkName) {
   drinkSave.textContent = 'Click here to save drink!';
   saveDrinkButtonContainer.innerHTML = '';
 
-  drinkSave.onclick = function(){
+  drinkSave.onclick = function () {
+    // get from local storage to know what already exists
+drinkSave.onclick = function(){
     // get from local storage to know what already exists
     var parsedDrinks = JSON.parse(localStorage.getItem("drink-Items"));
     console.log(parsedDrinks);
@@ -129,7 +136,7 @@ function showFood() {
       // Append 'foodImg' to the <div>
       imgContainerEl.appendChild(foodImg);
       saveLocalFood = localStorage;
-      saveFoodSearch(foodTitle,foodSite);
+      saveFoodSearch(foodTitle, foodSite);
     });
 }
 
@@ -160,14 +167,11 @@ function showDrink() {
 
       saveDrinkSearch(drinkTitle);
     });
-  
 }
 
 console.log(localStorage);
 
 
-
-
-const sbtn= document.getElementById("sbtn");
-const lsOutput = document.getElementById("lsOutput")
+const sbtn = document.getElementById('sbtn');
+const lsOutput = document.getElementById('lsOutput');
 console.log(drinkResponse);

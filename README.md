@@ -19,4 +19,6 @@ We’ll randomly choose a food and drink pairing for you to make a date night th
 * Melissa Natoli
 * Colin Reinhardt
 
-## Website Link
+## Website Links
+* Repository : https://github.com/misn0147/meal_match
+* Deployed Site : https://misn0147.github.io/meal_match/

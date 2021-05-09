@@ -2,11 +2,9 @@
 var drinkResponse = '';
 var drinkItems = 'drink-items';
 
-const key= drinkResponse;
+const key = drinkResponse;
 
-
-const value= document.getElementById("");
-
+const value = document.getElementById('');
 
 var searchHistory = [];
 var saveFoodButtonContainer = document.getElementById('food-save-btn');
@@ -19,27 +17,25 @@ function saveFoodSearch(foodName, foodLink) {
   foodSave.textContent = 'Click here to save food!';
   saveFoodButtonContainer.innerHTML = '';
 
-
-
-  foodSave.onclick = function(){
+  foodSave.onclick = function () {
     // get from local storage to know what already exists
     var existingSavedFoods = localStorage.getItem('food-Items');
     console.log(existingSavedFoods);
     if (existingSavedFoods === null) {
       //if there are no items saved yet, create new array with name of item and link
-      localStorage.setItem('food-Items', JSON.stringify([{foodName,foodLink}]));
-      var singleFood = JSON.parse(localStorage.getItem("food-Items"));
+      localStorage.setItem('food-Items', JSON.stringify([{ foodName, foodLink }]));
+      var singleFood = JSON.parse(localStorage.getItem('food-Items'));
       getSavedFoods(singleFood);
     } else {
       //if local storage for food items is already an array, push new items to that array
-      var parsedFoods = JSON.parse(localStorage.getItem("food-Items"));
-      parsedFoods.push({foodName,foodLink});
+      var parsedFoods = JSON.parse(localStorage.getItem('food-Items'));
+      parsedFoods.push({ foodName, foodLink });
       localStorage.setItem('food-Items', JSON.stringify(parsedFoods));
       getSavedFoods(parsedFoods);
     }
   };
   saveFoodButtonContainer.appendChild(foodSave);
-};
+}
 function getSavedFoods(foodList) {
   var recipeList = document.getElementById('recipe-list');
   for (i = 0; i < foodList.length; i++) {
@@ -53,8 +49,7 @@ function getSavedFoods(foodList) {
     listFoodItem.append(listFoodATag);
     recipeList.append(listFoodItem);
   }
-};
-
+}
 
 //creates save button for drink
 function saveDrinkSearch(drinkName) {
@@ -63,41 +58,42 @@ function saveDrinkSearch(drinkName) {
   drinkSave.textContent = 'Click here to save drink!';
   saveDrinkButtonContainer.innerHTML = '';
 
-
-  drinkSave.onclick = function(){
+  drinkSave.onclick = function () {
     // get from local storage to know what already exists
     var existingSavedDrinks = localStorage.getItem('drink-Items');
     console.log(existingSavedDrinks);
     if (existingSavedDrinks === null) {
       //if there are no items saved yet, create new array with name of item
-      localStorage.setItem('drink-Items', JSON.stringify([{drinkName}])); 
-      var singleDrink = JSON.parse(localStorage.getItem("drink-Items"));
-      getSavedDrinks(singleDrink);     
+      localStorage.setItem('drink-Items', JSON.stringify([{ drinkName }]));
+      var singleDrink = JSON.parse(localStorage.getItem('drink-Items'));
+      getSavedDrinks(singleDrink);
     } else {
       //if local storage for drink items is already an array, push new items to that arra
-      var parsedDrinks = JSON.parse(localStorage.getItem("drink-Items"));
-      parsedDrinks.push({drinkName});
+      var parsedDrinks = JSON.parse(localStorage.getItem('drink-Items'));
+      parsedDrinks.push({ drinkName });
       localStorage.setItem('drink-Items', JSON.stringify(parsedDrinks));
       getSavedDrinks(parsedDrinks);
     }
   };
   saveDrinkButtonContainer.appendChild(drinkSave);
-};
+}
 function getSavedDrinks(drinkList) {
   var drinkDisplay = document.getElementById('drink-list');
   for (i = 0; i < drinkList.length; i++) {
     console.log(drinkList[i].drinkName);
     var listDrinkItem = document.createElement('li');
     var listDrinkATag = document.createElement('a');
-    listDrinkATag.setAttribute('href', 'https://www.google.com/search?q=' + drinkList[i].drinkName + ' Drink Recipe');
+    listDrinkATag.setAttribute(
+      'href',
+      'https://www.google.com/search?q=' + drinkList[i].drinkName + ' Drink Recipe'
+    );
     listDrinkATag.textContent = drinkList[i].drinkName;
-    listDrinkItem.setAttribute('class', 'food-list-item');
+    listDrinkATag.setAttribute('class', 'drink-list-item');
     listDrinkATag.setAttribute('target', '_blank');
     listDrinkItem.append(listDrinkATag);
     drinkDisplay.append(listDrinkItem);
   }
-};
-
+}
 
 // this funtion runs onclick of TryUsOut button
 function showFood() {
@@ -107,7 +103,6 @@ function showFood() {
       return response.json();
     })
     .then(function (response) {
-
       //gets a random number between 0 - length of the array of all meal items per category (ex: beef has 37 items, vegan has 3 items)
       function randomNumber(min, max) {
         const randomArrayNumber = Math.random() * (max - min) + min;
@@ -126,7 +121,6 @@ function showFood() {
     })
     //DISPLAY FOOD ON PAGE
     .then(function (foodResult) {
-
       // Display selected food title on page
       var foodTitle = foodResult.meals[0].strMeal;
       $('#food-title-container').text(foodTitle);
@@ -161,7 +155,6 @@ function showDrink() {
       return drinkResponse.json();
     })
     .then(function (drinkResponse) {
-
       var drinkTitle = drinkResponse.drinks[0].strDrink;
       $('#drink-title-container').text(drinkTitle);
 
@@ -185,7 +178,6 @@ function showDrink() {
 }
 
 console.log(localStorage);
-
 
 const sbtn = document.getElementById('sbtn');
 const lsOutput = document.getElementById('lsOutput');
